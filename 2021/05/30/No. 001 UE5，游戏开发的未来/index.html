@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="ThouSun"><title>UE5，游戏开发的未来？#就是做游戏No. 001 · 蔽日檐</title><meta name="description" content="UE5在5月26日正式发布Demo版本，面对一大堆的New Feature，周末也是赶紧下载了官方的古代山谷Demo好好把玩了一番。总的来说，UE5目前更像是一个Feature增强版，其基础的架构与功能与UE4.26没有区别，只是增加了非常多让人兴奋的新特性，我也是挨个把各种特性体验了一遍，聊聊使用"><meta name="keywords" content="蔽日檐,BLOG"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">蔽日檐</a></h3><div class="description"><p>欢迎从繁华世间来此小憩。<br></p></div></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/mrcore"><i class="fa fa-github"></i></a></li><li><a href="798567143king@gmail.com"><i class="fa fa-envelope"></i></a></li><li><a target="_blank" rel="noopener" href="https://www.instagram.com/_thousun/"><i class="fa fa-qq"></i></a></li><li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/ThouSun007"><i class="fa fa-mortar-board"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2021 - 2021 </span><i class="fa fa-star"></i><span> ThouSun</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div><div class="beian"><a href="http://www.beian.miit.gov.cn/" target="_blank"></a><span style="height:10px;margin-left: 10px;">|</span><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;"></span></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/guestbook">留言</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>UE5，游戏开发的未来？#就是做游戏No. 001</a></h3></div><div class="post-content"><meta name="referrer" content="no-referrer"/>
+
+<blockquote>
+<p>UE5在5月26日正式发布Demo版本，面对一大堆的New Feature，周末也是赶紧下载了官方的古代山谷Demo好好把玩了一番。总的来说，UE5目前更像是一个Feature增强版，其基础的架构与功能与UE4.26没有区别，只是增加了非常多让人兴奋的新特性，我也是挨个把各种特性体验了一遍，聊聊使用反馈🎠。</p>
+</blockquote>
+<h1 id="UE5，全新的UI设计"><a href="#UE5，全新的UI设计" class="headerlink" title="UE5，全新的UI设计"></a>UE5，全新的UI设计</h1><p>UE5的UI经过了完全的重新设计，只是设计风格更加扁平，更加现代化了✨。但是，其基本的交互逻辑，按键布局跟UE4没啥区别，所以上起手来十分的简单。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqksnjhwj61jj0u8hdu02.jpg" width="800"></img>
+</div>
+
+
+<p>另外，UE5完善了窗口的Docking System，现在可以把各种窗口Dock成小标签，或者干脆隐藏后台用快捷键呼出，这样可以更多的显示场景主视窗。这个思路跟Adobe做设计软件思路挺像的，对关卡设计师或者场景美术来说还十分友好的🧙‍♂️。</p>
+<h1 id="NANITE"><a href="#NANITE" class="headerlink" title="NANITE"></a>NANITE</h1><p>目测是整个UE5最主打的核心功能，高模直接进引擎。</p>
+<h2 id="视觉效果"><a href="#视觉效果" class="headerlink" title="视觉效果"></a>视觉效果</h2><p>仔细看细节呈现的效果其实并没有那么惊艳，面数也没有突破天际，感觉跟普通terrain加了个displacement shader没啥区别。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkuily1j61jj0vk4qt02.jpg" width="800"></img>
+</div>
+
+
+<p>真正神奇的是，所有复杂的高精度模型一起同屏显示的整体的效果真的十分惊艳；并且在镜头在场景里穿梭时LOD的变化真的太流畅了，人眼几乎察觉不出来。其背后的思路应该是根据渲染像素调整单个像素渲染的triangles数量🍕，只要单个像素渲染的triangles数足够多，人眼就无法分辨面片，有点像苹果的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Retina%E6%98%BE%E7%A4%BA%E5%B1%8F">Retina屏</a>的概念。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqktkhe3j61jj0pc4qs02.jpg" width="800"></img>
+</div>
+
+
+<p>并且感觉NANITE对多场景实体也处理的很好，示例项目里一块石头就由数百个StaticMesh拼出来。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqksdrynj61jj0ta4qq02.jpg" width="800"></img>
+</div>
+
+
+<h2 id="NANITE对美术管线的颠覆"><a href="#NANITE对美术管线的颠覆" class="headerlink" title="NANITE对美术管线的颠覆"></a>NANITE对美术管线的颠覆</h2><p>其实抛开视觉效果，NANITE对于游戏开发最大的颠覆其实是在美术管线上🎡。过去的一套完整的PBR高精度美术素材生产可能要经历低模/高模/法线烘焙/LOD分级导出等等复杂流程。而有了NANITE想当于能在游戏底层直接解决高模渲染的问题，美术生产高模资源，直接扔进引擎就完事儿了。这务必可以大幅精简美术的生产管线。</p>
+<h1 id="新的RTGI方案-LUMEN"><a href="#新的RTGI方案-LUMEN" class="headerlink" title="新的RTGI方案-LUMEN"></a>新的RTGI方案-LUMEN</h1><p>同时支持Software Ray Tracing和Hardware Ray Tracing的全局GI方案，Fully Dynamic，不需要烘培任何东西了。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkmjwa7j61ac0ffdig02.jpg" width="800"></img>
+</div>
+
+
+<p>使用起来感觉太惊艳了，这玩意儿支持的光照类型也太多了，从各种片状光源，到emissive材质，统统能完全实时生成效果很棒的Indirect light，虽然目前依然存在一些光影上的<a target="_blank" rel="noopener" href="https://youtu.be/CFKNoeUPQGQ?t=353">视觉bug</a>，但是看上去真的潜力无限。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzrnsmf95j60tk0ean2s02.jpg" width="800"></img>
+</div>
+
+
+<p>这是一个能真正从开发侧普及光追技术的东西。</p>
+<h1 id="新的AA方案-TSR"><a href="#新的AA方案-TSR" class="headerlink" title="新的AA方案-TSR"></a>新的AA方案-TSR</h1><div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqknnt05j60wx0luwgq02.jpg" width="800"></img>
+</div>
+
+
+<p>选项里还是只有TAA的选项，估计是因为用了NANITE/LUMEN等新技术导致老得TAA有一些问题，于是针对性的优化了一下。</p>
+<h1 id="Sky-Atmosphere-System"><a href="#Sky-Atmosphere-System" class="headerlink" title="Sky Atmosphere System"></a>Sky Atmosphere System</h1><p>让美术能很方便的调整场景中云，雾，光线散射产生的氛围效果。体验了一下，非常简单易用，所见即所得。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqktsghyj61jj0u81ky02.jpg" width="800"></img>
+</div>
+
+
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkr6pdij61jj0u74qq02.jpg" width="800"></img>
+</div>
+
+
+
+
+<h1 id="World-Partition"><a href="#World-Partition" class="headerlink" title="World Partition"></a>World Partition</h1><p>终于虚幻也集成关卡分块协同编辑工具了，目前只有基础的场景加载卸载，以及移动摄像机功能🚲。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkmxenlj60ja0imane02.jpg" width="500"></img>
+</div>
+
+
+<p>这个系统应该也同时处理Level Streaming。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkpa0ojj60fm0fknem02.jpg" width="500"></img>
+</div>
+
+
+<p>One File Per Actor，一个很方便的关卡协同编辑功能，场景里的物体(mesh/光照)可以以单独文件保存，而不是存在一个.map文件里，协同的时候分文件上传不冲突。</p>
+<p>Data Layer，可以给关卡加layer了，第一反应是很适合一些双世界切换的游戏，比如泰坦陨落2或者耻辱2里的双世界切换关卡。不过这个功能的初衷应该是给关卡设计师或者场景美术做不同版本设计迭代用的。</p>
+<h1 id="Game-Feature-Plugin"><a href="#Game-Feature-Plugin" class="headerlink" title="Game Feature Plugin"></a>Game Feature Plugin</h1><p>这是一个可以把各种Feature做成模块化元件的功能，Game Feature可以耦合游戏的其他系统，实现各种功能。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkn7v6lj61jj0ub0wt02.jpg" width="800"></img>
+</div>
+
+
+<p>比如，角色的攻击能力可以用Gameplay Ability类做，再封装成一个Game Feature，在角色需要攻击的时候加载Game Feature就好，角色的主逻辑完全不需要处理攻击相关的内容。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkmnrb3j61jj0u37my02.jpg" width="800"></img>
+</div>
+
+
+<p>也可以为Ability做单独的ABP处理动作，触发Ability的时候再加载这个ABP。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkn5frzj61h50z114u02.jpg" width="800"></img>
+</div>
+
+
+<p>感觉Game Feature Plugin的合理应用能带来的益处还是很大的。首先是做游戏整体系统框架的时候，可以更精简🍥。很多额外的Feature可以模块化的做，不用都集成在比如Playable Character这种很复杂Class下面。</p>
+<p>另外就是可以给Designer更多做Feature的自主权，Designer可以不用深度了解程序做的复杂系统架构，就自己写一些玩法Feature快速验证迭代。</p>
+<h1 id="FBIK"><a href="#FBIK" class="headerlink" title="FBIK"></a>FBIK</h1><p>终于虚幻也自带FBIK了，很多项目不用每次都重新造一遍轮子，没有深度使用，看起来可客制化程度挺高的。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkngjv9j61jj0u8qoy02.jpg" width="800"></img>
+</div>
+
+
+
+
+<h1 id="Motion-Warping"><a href="#Motion-Warping" class="headerlink" title="Motion Warping"></a>Motion Warping</h1><p>也是一个做3P游戏常见的功能了，研究了下Motion Warping的配置流程：先在角色主BP下加Motion Warping组件。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkmrhkuj60at0admxt02.jpg" width="500"></img>
+</div>
+
+
+<p>Vault触发时，射线检测判定几个锚点，再设置Sync Point。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkney24j60nc09o77j02.jpg" width="500"></img>
+</div>
+
+
+<p>Vault动作里，指定不同动作段，根据不同Sync Point去Warp Root Motion。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqko62qsj61jj0x6e8102.jpg" width="800"></img>
+</div>
+
+
+
+
+<h1 id="Control-Rig"><a href="#Control-Rig" class="headerlink" title="Control Rig"></a>Control Rig</h1><p>玩了一下，感觉还不错，确实可以实现在引擎里制作角色动作了。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqknfgm8j60iq0g142502.jpg" width="500"></img>
+</div>
+
+
+<p>就是这Control Rig的配置是不是也太复杂了。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqknkdlzj61jj0wxhdt02.jpg" width="800"></img>
+</div>
+
+
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkper3zj61jj0x77wh02.jpg" width="800"></img>
+</div>
+
+
+
+
+<h1 id="Meta-Sound"><a href="#Meta-Sound" class="headerlink" title="Meta Sound"></a>Meta Sound</h1><p>一个集成了多路Audio Routing和各种效果器的可视化工具，而且还有一些简单的波形发生器，第一反应就是可以在Meta Sound里做Sound Design了。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqknjpy7j60gn0f1js802.jpg" width="800"></img>
+</div>
+
+
+<p>于是当然就简单的用波形发生器+一些效果器做了个声音，非常好玩。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzqkmr026j61jj0td4cz02.jpg" width="800"></img>
+</div>
+
+
+<p><audio src="http://attachment.0sm.com/node0/2021/05/860B26F426A76FBF-2bcb18f6f466f9d3.mp3
+"></audio></p>
+<p>思考了一下，Meta Sound这种把Sound Design下放到引擎中制作的思路，其实可以实现的是Procedure Game Audio，一是节省内存资源(当然算力成本可能就比较大)，二是更多runtime可能性，audio会更加动态。</p>
+<h1 id="虚幻5：游戏的未来？关于工业化管线未来的思考"><a href="#虚幻5：游戏的未来？关于工业化管线未来的思考" class="headerlink" title="虚幻5：游戏的未来？关于工业化管线未来的思考"></a>虚幻5：游戏的未来？关于工业化管线未来的思考</h1><p>虚幻5体验下来，其实并没有让我在产品端看到非常惊人的跃进，因为随着市场的扩大，开发规模的扩大，现在游戏能展现的效果已经非常惊人。在产品端想要看到惊人的跃进，无论是画面也好还是游戏复杂度也好，都已经非常困难。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzrg2u6grj61hc0u0qfu02.jpg" width="800"></img>
+</div>
+
+
+<p>而虚幻5作为一个游戏开发工具，让我看到更多的其实是开发侧的“次世代”，是一个更加优化的开发管线方案，让制作一个复杂度如赛博朋克2077游戏的成本能更加可控的未来。所以，如NANITE的惊艳之处并不在于其能提高多少画面效果，而是能给复杂场景的资产生产管线带来无限优化的可能；又或者是Meta Sound等Procedure工具，能让实体资产更加轻量化的可能。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzrg2uj97j61hc0u0aes02.jpg" width="800"></img>
+</div>
+
+
+<p>游戏是一种交互媒介，其需要的资产数量会随着交互的复杂度指数级上升。游戏跟电影等媒介不一样，产出的东西就是观众实际看到的一帧帧画面。而游戏需要预测不同玩家的交互需求，为不同的交互需求做额外的内容，比如开放世界游戏地图里丰富的探索内容，叙事类游戏常见的分支剧情。因此当现在游戏追求越来越高的自由度，越来越多的涌现性，越来越多的交互多样性，游戏越来越朝着所谓的MetaVerse概念去发展的时候，单个玩家体验到的游戏内容占比其实是越来越低的，在保证一个玩家体验到内容量情况下(如单机游戏常见的30小时流程)，游戏的体量，其需要的资产其实是大大上升的。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzrg2roqwj61hc0u0qfx02.jpg" width="800"></img>
+</div>
+
+
+<p>而随着游戏资产数量的上升，资产管理的成本会呈指数级上升。这里的资源管理成本既指游戏开发中对资产的管理成本，也指游戏运行中资产消耗的内存/算力成本。就拿最基本的角色动作举例子，过去游戏对角色可能只做几个走跑跳动作，通过简单的状态机连起来就完了；现在游戏越来越追求交互的复杂度，各种攀爬/翻越功能被加进了游戏，这些攀爬/翻越功能还得去适配越来越复杂的关卡环境，为了不同动作间的流畅转接，过渡动作也越来越多…目前一个写实动作游戏的角色动作数量可能成千上万，如何在游戏开发过程中设计这些动作的转接，如何在游戏运行中处理动作的内存加载问题等等，都是需要非常优秀的设计方法，优秀的技术方案去解决的。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gqzrg2qwpcj60fa09k3z202.jpg" width="800"></img>
+</div>
+
+
+<p>因此，资产生产成本以及资产管理成本在当今游戏行业里其实是非常严峻的问题，而我的感觉是，其解决方案可能会有两个大的方向….</p>
+<p>一个就是上面提到的资产Procedure化，这是一种实体资产(动画/音频/模型资源)轻量化的思维。在这种思维下，游戏项目中的实体资产会倾向于做更基础的设计元件，比如说Sound Design需要的基础Audio Bank；动画融合需要的基础Pose/动画序列，再在引擎中集成良好的Procedure工具，比如Sound Design工具；动画Modify工具等等，通过规则驱动生成游戏最终展现的内容，这也就意味着，你在游戏中听到的声音，看到的动作，甚至是模型/贴图，都不是艺术家实际生产的资产，而是游戏Runtime生成的内容。</p>
+<p>另一种是一种重资产，轻管理策略的思维。即我先建立起一个庞大的资产库，再通过基于深度学习的方式，在合适的时间点，挑选出合适的资产加以使用。这种思维的本质其实是将资产管理下放给AI，成本重头就放在了资产库的生产上。如Motion Matching，就是一种基于深度学习做Locomotion的方案，其通过角色目标移动方位与地形，去动作库里抓取出一个最适合的动作播放，让角色能在复杂地形以自然的表现运动。</p>
+<h1 id="衍生阅读"><a href="#衍生阅读" class="headerlink" title="衍生阅读"></a>衍生阅读</h1><p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/">UE5的官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/YTc-JIYrnYU">UE5 Demo Feature List</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/kfPLOPa5u-k">William Faucher的UE5 First Look直播</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/CFKNoeUPQGQ">Things To Know About LUMEN</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/Ul0Gilv5wvY">Phase-Functioned Neural Networks for Character Control</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/KSTn3ePDt50">GDC 2016 - Motion Matching, The Future of Games Animation… Today</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/vM39qhXle4g">The Habits of Effective Artists</a></p>
+<hr>
+<p><strong>大家好我是ThouSun，你还可以在下面这些地方找到我噢，欢迎关注！</strong></p>
+<p><strong>奶牛关：<a target="_blank" rel="noopener" href="https://cowlevel.net/people/ThouSun">ThouSun</a></strong></p>
+<p><strong>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/ThouSun007">ThouSun007</a></strong> </p>
+<p><strong>网易音乐人：<a target="_blank" rel="noopener" href="https://music.163.com/#/artist?id=12077224">ThouSun</a></strong></p>
+<p><strong>Instergram：<a target="_blank" rel="noopener" href="https://www.instagram.com/_thousun/">_thousun</a></strong></p>
+<p><strong>个人博客：<a href="https://thousun.github.io/">蔽日檐</a></strong></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-05-30</span><i class="fa fa-tag"></i><a class="tag" href="/tags/就是做游戏/" title="就是做游戏">就是做游戏 </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://ThouSun.github.io/2021/05/30/No. 001 UE5，游戏开发的未来/,蔽日檐,UE5，游戏开发的未来？#就是做游戏No. 001,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2021/05/23/Vol.%20001%E5%91%A8%E7%BB%89%E4%B9%8B%E8%B0%88/" title="Vol. 001 周绉之谈">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script src="/js/baidu-tongji.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":200,"height":400,"hOffset":5,"vOffset":-8},"mobile":{"show":false,"scale":0.2},"react":{"opacityDefault":0.8,"opacityOnHover":0.2},"log":false});</script></body></html>
