@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="ThouSun"><title>Advanced locomotion拆解—P1.ABP#就是做游戏No. 002 · 蔽日檐</title><meta name="description" content="Advanced Locomotion是Unreal应用商店中一个100%蓝图制作的写实Locomotion系统🎠。Advanced locomotion如今已经发展到第四代，并且在MarketPlace完全免费开放下载，是Unreal学习过程中不可或缺的优秀资源。
+
+基本框架
+    
+
+
+可以"><meta name="keywords" content="蔽日檐,BLOG"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">蔽日檐</a></h3><div class="description"><p>欢迎从繁华世间来此小憩。<br></p></div></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/mrcore"><i class="fa fa-github"></i></a></li><li><a href="798567143king@gmail.com"><i class="fa fa-envelope"></i></a></li><li><a target="_blank" rel="noopener" href="https://www.instagram.com/_thousun/"><i class="fa fa-qq"></i></a></li><li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/ThouSun007"><i class="fa fa-mortar-board"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2021 - 2021 </span><i class="fa fa-star"></i><span> ThouSun</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div><div class="beian"><a href="http://www.beian.miit.gov.cn/" target="_blank"></a><span style="height:10px;margin-left: 10px;">|</span><img src="/images/gongan.png" style="height:10px;margin-left: 10px;position: relative;top: 1px;"><span style="margin-left: 2px;"></span></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/guestbook">留言</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Advanced locomotion拆解—P1.ABP#就是做游戏No. 002</a></h3></div><div class="post-content"><meta name="referrer" content="no-referrer"/>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.unrealengine.com/marketplace/zh-CN/product/advanced-locomotion-system-v1">Advanced Locomotion</a>是Unreal应用商店中一个100%蓝图制作的写实Locomotion系统🎠。Advanced locomotion如今已经发展到第四代，并且在MarketPlace完全免费开放下载，是Unreal学习过程中不可或缺的优秀资源。</p>
+</blockquote>
+<h1 id="基本框架"><a href="#基本框架" class="headerlink" title="基本框架"></a>基本框架</h1><div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp26afi3j61g70fxgvd02.jpg" width="800"></img>
+</div>
+
+<p>可以看到，整个ABP分为四层处理：</p>
+<p>1）Layer Blending——产生Locomotion动画，最核心，其余三层均可看做后处理</p>
+<p>2）AO+spine rotation——增加AO以及在3P瞄准射击时对Spine进行旋转</p>
+<p>3）IK——手部IK+脚部IK</p>
+<p>4）Ragdoll系统</p>
+<p>PS：拆解核心放在LayerBlending的处理，其他功能都相对比较基础</p>
+<h1 id="Base-Layer"><a href="#Base-Layer" class="headerlink" title="Base Layer"></a>Base Layer</h1><p>六向运动基础动画输出</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25xo1lj61850k5n9o02.jpg" width="800"></img>
+</div>
+
+<h2 id="Locomotion-Cycle"><a href="#Locomotion-Cycle" class="headerlink" title="Locomotion Cycle"></a>Locomotion Cycle</h2><p>处理站立状态六向移动动作的融合输出，蹲姿处理相似</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25ojeyj611j0nj13j02.jpg" width="800"></img>
+</div>
+
+
+
+<h2 id="Locomotion-Detail"><a href="#Locomotion-Detail" class="headerlink" title="Locomotion Detail"></a>Locomotion Detail</h2><p>增加站立移动细节动作，如180度转向，走跑切换，起步</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25ilzpj61cj0kdn7d02.jpg" width="800"></img>
+</div>
+
+<h2 id="Locomotion-State"><a href="#Locomotion-State" class="headerlink" title="Locomotion State"></a>Locomotion State</h2><p>主要处理急停，90度转向，原地转向。急停用了<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=uqsXmH4KBls&ab_channel=LongmireLocomotion">FootLocking</a>+回正脚步动作，保证在移动cycle任何时候停止的自然表现；原地转向也同理。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25gejdj618i0ei0zi02.jpg" width="800"></img>
+</div>
+
+<h2 id="Main-Ground-State"><a href="#Main-Ground-State" class="headerlink" title="Main Ground State"></a>Main Ground State</h2><p>上述聊到的都是站姿六向运动动作输出，蹲姿做了类似的处理，然后再通过Main Ground State将站蹲整合，处理一些站蹲切换过渡的情况。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25g2q0j60kk0bbq6a02.jpg" width="800"></img>
+</div>
+
+<h2 id="Main-Movement-State"><a href="#Main-Movement-State" class="headerlink" title="Main Movement State"></a>Main Movement State</h2><p>主要处理跳跃，比较有意思的是Land Predict功能</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25turhj612n0qlgv602.jpg" width="800"></img>
+</div>
+
+
+
+<h1 id="Overlay-Layer"><a href="#Overlay-Layer" class="headerlink" title="Overlay Layer"></a>Overlay Layer</h1><p>处理双手持不同物品时，用作Overlay的叠加层动画跳转。手持不同的物品，有不同的动画跳转流程。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25o1ppj60ff0i9q7d02.jpg" width="800"></img>
+</div>
+
+
+
+<h2 id="无瞄准的Default状态"><a href="#无瞄准的Default状态" class="headerlink" title="无瞄准的Default状态"></a>无瞄准的Default状态</h2><p>基础站姿+蹲姿pose输出，叠加呼吸表现</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25vkl1j616q07m79b02.jpg" width="800"></img>
+</div>
+
+<h2 id="手持Barrel-Box状态"><a href="#手持Barrel-Box状态" class="headerlink" title="手持Barrel/Box状态"></a>手持Barrel/Box状态</h2><p>基本走跑pose输出+特殊动作Override输出</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25tr9mj61230kwgvo02.jpg" width="800"></img>
+</div>
+
+<h2 id="手持Torch-Binoculars状态"><a href="#手持Torch-Binoculars状态" class="headerlink" title="手持Torch/Binoculars状态"></a>手持Torch/Binoculars状态</h2><p>按右键有瞄准状态，做了上下摆头动作输出</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25uin5j61dq0kek5102.jpg" width="800"></img>
+</div>
+
+<h2 id="持枪状态"><a href="#持枪状态" class="headerlink" title="持枪状态"></a>持枪状态</h2><p>做了持枪/预备开枪/举枪瞄准三个状态的动作输出</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp25w2nyj61dt0htk2602.jpg" width="800"></img>
+</div>
+
+
+
+<h1 id="Layer-Blending"><a href="#Layer-Blending" class="headerlink" title="Layer Blending"></a>Layer Blending</h1><p>做了一套Leg，Pelvis，Spine，Head，ArmL，ArmR分slot融合的系统，并且利用这套系统融合上面的Overlay Layer层动画。后续可以很方便的用这套系统做一些上下半身融合/手部脚部融合操作。</p>
+<div align=center>
+    <img src="http://ww1.sinaimg.cn/large/0080skDGgy1gsmp261sduj618r0m84ak02.jpg" width="800"></img>
+</div>
+
+
+<p>附：完整的PDF下载可以在<a target="_blank" rel="noopener" href="http://afdian.net/@ThouSun">爱发电</a>上给我打赏一杯咖啡获得噢<del>感谢你的支持</del></p>
+<h1 id="衍生阅读"><a href="#衍生阅读" class="headerlink" title="衍生阅读"></a>衍生阅读</h1><p><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCg6JqNsa7FeuUBfDT3ZsehQ">Advanced Locomotion官方频道</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.26/en-US/AnimatingObjects/SkeletalMeshAnimation/AnimHowTo/AdditiveAnimations/">Using Layered Animations官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://trello.com/c/20verMOV/172-make-dynamic-additive-node-for-animation-blueprints">Make Dynamic Additive node介绍</a></p>
+<hr>
+<p><strong>大家好我是ThouSun，你还可以在下面这些地方找到我噢，欢迎关注！</strong></p>
+<p><strong>奶牛关：<a target="_blank" rel="noopener" href="https://cowlevel.net/people/ThouSun">ThouSun</a></strong></p>
+<p><strong>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/ThouSun007">ThouSun007</a></strong> </p>
+<p><strong>网易音乐人：<a target="_blank" rel="noopener" href="https://music.163.com/#/artist?id=12077224">ThouSun</a></strong></p>
+<p><strong>Instergram：<a target="_blank" rel="noopener" href="https://www.instagram.com/_thousun/">_thousun</a></strong></p>
+<p><strong>个人博客：<a href="https://thousun.github.io/">蔽日檐</a></strong></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-07-24</span><i class="fa fa-tag"></i><a class="tag" href="/tags/就是做游戏/" title="就是做游戏">就是做游戏 </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://ThouSun.github.io/2021/07/24/No. 002 Advanced locomotion拆解—P1.ABP/,蔽日檐,Advanced locomotion拆解—P1.ABP#就是做游戏No. 002,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2021/06/11/Vol.%20002%E5%91%A8%E7%BB%89%E4%B9%8B%E8%B0%88/" title="Vol. 002 周绉之谈">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script src="/js/baidu-tongji.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":200,"height":400,"hOffset":5,"vOffset":-8},"mobile":{"show":false,"scale":0.2},"react":{"opacityDefault":0.8,"opacityOnHover":0.2},"log":false});</script></body></html>
